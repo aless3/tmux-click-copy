@@ -11,8 +11,7 @@ tmux bind-key -T copy-mode DoubleClick1Pane \
     select-pane \; \
     send -X select-word \; \
     send -X copy-pipe-no-clear \; \
-    run 'echo $CURRENT_DIR >> tmp' \; \
-    run "$CURRENT_DIR/scripts/tmux_exit_copy #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} > /dev/null &"
+    run "$CURRENT_DIR/scripts/tmux_click_copy.sh #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} > /dev/null &"
 
 tmux bind-key -T root DoubleClick1Pane \
     select-pane -t = \; \
@@ -21,21 +20,18 @@ tmux bind-key -T root DoubleClick1Pane \
         { copy-mode -H ; \
             send -X select-word ; \
             send -X copy-pipe-no-clear ; \
-    run 'echo $CURRENT_DIR >> tmp' \; \
-            run "$CURRENT_DIR/scripts/tmux_exit_copy #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} > /dev/null &" }
+            run "$CURRENT_DIR/scripts/tmux_click_copy.sh #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} > /dev/null &" }
 
 # Triple LMB Select & Copy (Line)
 tmux bind-key -T copy-mode TripleClick1Pane \
     select-pane \; \
     send -X select-line \; \
     send -X copy-pipe-no-clear \; \
-    run 'echo $CURRENT_DIR >> tmp' \; \
-    run "$CURRENT_DIR/scripts/tmux_exit_copy #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} > /dev/null &"
+    run "$CURRENT_DIR/scripts/tmux_click_copy.sh #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} > /dev/null &"
 
 tmux bind-key -n TripleClick1Pane \
     select-pane \; \
     copy-mode -M \; \
     send-keys -X select-line \; \
     send-keys -X copy-pipe-no-clear \; \
-    run 'echo $CURRENT_DIR >> tmp' \; \
-    run "$CURRENT_DIR/scripts/tmux_exit_copy #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} > /dev/null &"
+    run "$CURRENT_DIR/scripts/tmux_click_copy.sh #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} > /dev/null &"
