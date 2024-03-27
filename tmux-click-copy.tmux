@@ -4,7 +4,7 @@
 # https://gitlab.com/ideasman42/dotfiles
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-tmux bind-key T run-shell "$CURRENT_DIR/scripts/tmux_list_plugins.sh"
+tmux bind-key T run-shell "$CURRENT_DIR/scripts/tmux_list_plugins.sh $CURRENT_DIR"
 
 # Double LMB Select & Copy (Word)
 tmux bind-key -T copy-mode DoubleClick1Pane \
