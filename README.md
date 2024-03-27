@@ -4,4 +4,4 @@ This plugin rebind DoubleClick1Pane and TripleClick1Pane in the root and copy-mo
 
 This enables to drag to extend the selection with double or triple click with the 'word-selection' and 'line-selection', but also does not leave the pane in copy mode if using just a double (or triple) click to select just the word or the line without dragging the mouse
 
-Double & Triple click taken and modified from [ideasman dotfiles](https://gitlab.com/ideasman42/dotfiles) with an async timer
+Double & Triple click taken and modified from [ideasman dotfiles](https://gitlab.com/ideasman42/dotfiles) with an async sleep in bash 
