@@ -17,6 +17,6 @@ sleep $sleep_duration
 # into two different #{&&:X,Y} expressions and run the and between those two
 # each of the four inner expression is simply a check if the selection boundary
 # is the same this script received as input or changed (once for start(x|y) and end(x|y)).
-# Then if all the boundaries are the same, `copy-mode -q -t ${pane_id}` send an
-# 'exit copy-mode' (copy-mode -q) to the pane that triggered this script
-tmux if -F "#{&&:#{&&:#{==:#{selection_start_x},${selection_start_x}},#{==:#{selection_start_y},${selection_start_y}}},#{&&:#{==:#{selection_end_x},${selection_end_x}},#{==:#{selection_end_y},${selection_end_y}}}}" "copy-mode -q -t ${pane_id}"
+# Then if all the boundaries are the same, copy the selection and cancel copy-mode
+# in the pane that triggered this script
+tmux if -F "#{&&:#{&&:#{==:#{selection_start_x},${selection_start_x}},#{==:#{selection_start_y},${selection_start_y}}},#{&&:#{==:#{selection_end_x},${selection_end_x}},#{==:#{selection_end_y},${selection_end_y}}}}" "send -X -t ${pane_id} copy-selection-and-cancel"
