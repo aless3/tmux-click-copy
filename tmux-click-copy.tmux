@@ -18,7 +18,7 @@ TCC_COMMAND="${TCC_BIN} #{pane_id} #{selection_start_x} #{selection_start_y} #{s
 tmux bind-key -T copy-mode DoubleClick1Pane \
     select-pane \\\; \
     send-keys -X select-word \\\; \
-    send-keys -X copy-pipe-no-clear \\\; \
+    send-keys -X copy-selection-no-clear \\\; \
     run-shell "${TCC_COMMAND}"
 
 tmux bind-key -T root DoubleClick1Pane \
@@ -27,7 +27,7 @@ tmux bind-key -T root DoubleClick1Pane \
         "send-keys -M"  \
         "copy-mode -H ; \
             send-keys -X select-word ; \
-            send-keys -X copy-pipe-no-clear ; \
+            send-keys -X copy-selection-no-clear ; \
             run-shell \"${TCC_COMMAND}\" "
 
 
@@ -35,7 +35,7 @@ tmux bind-key -T root DoubleClick1Pane \
 tmux bind-key -T copy-mode TripleClick1Pane \
     select-pane \\\; \
     send-keys -X select-line \\\; \
-    send-keys -X copy-pipe-no-clear \\\; \
+    send-keys -X copy-selection-no-clear \\\; \
     run-shell "${TCC_COMMAND}"
 
 tmux bind-key -n TripleClick1Pane \
@@ -44,5 +44,5 @@ tmux bind-key -n TripleClick1Pane \
     "send-keys -M" \
     "copy-mode -H ; \
         send-keys -X select-line ; \
-        send-keys -X copy-pipe-no-clear ; \
+        send-keys -X copy-selection-no-clear ; \
         run-shell \"${TCC_COMMAND}\" "
