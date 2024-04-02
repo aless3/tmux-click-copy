@@ -19,4 +19,5 @@ set -g @tcc_timeout 10
 set -g @plugin "aless3/tmux-click-copy"
 ```
 
+The shell script command used internally is stored also in the option @TCC_COMMAND, you can bind it at the end of your binding to further customize the behavior of this plugin.
 
