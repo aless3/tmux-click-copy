@@ -10,6 +10,9 @@ TIMEOUT=$( get_tmux_option "@tcc_timeout" "$TCC_DEFAULT_TIMEOUT" )
 
 TCC_COMMAND="${TCC_BIN} #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} ${TIMEOUT} > /dev/null &"
 
+# keep an option with the shell command so the user can bind it where they prefer
+tmux set-option -g @TCC_COMMAND ${TCC_COMMAND}
+
 
 # Double & Triple click taken and modified from ideasman dotfiles with an async timer
 # https://gitlab.com/ideasman42/dotfiles
