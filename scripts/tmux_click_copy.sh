@@ -32,4 +32,4 @@ same_rect="#{&&:${start_and},${end_and}}"
 rect_tcc_down="#{&&:${same_rect},#{@tcc_down}}"
 
 # run the expression in tmux
-tmux if -F "${rect_tcc_down}" "send -X -t ${pane_id} copy-selection-and-cancel ; set-option -p -t ${pane_id} @tcc_down 0"
+tmux if -bF "${rect_tcc_down}" "send -X -t ${pane_id} copy-selection-and-cancel ; set-option -p -t ${pane_id} @tcc_down 0"
