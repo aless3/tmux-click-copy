@@ -8,7 +8,7 @@ source "$TCC_PATH/scripts/helpers.sh"
 TCC_DEFAULT_TIMEOUT="0.5"
 TIMEOUT=$( get_tmux_option "@tcc_timeout" "$TCC_DEFAULT_TIMEOUT" )
 
-TCC_DEFAULT_LONG_TIMEOUT=$(($TCC_DEFAULT_TIMEOUT*1.5))
+TCC_DEFAULT_LONG_TIMEOUT="0.7"
 LONG_TIMEOUT=$( get_tmux_option "@tcc_long_timeout" "$TCC_DEFAULT_LONG_TIMEOUT" )
 
 TCC_AUTOBIND=true
