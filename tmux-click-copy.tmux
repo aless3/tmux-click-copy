@@ -11,6 +11,9 @@ TIMEOUT=$( get_tmux_option "@tcc_timeout" "$TCC_DEFAULT_TIMEOUT" )
 TCC_DEFAULT_LONG_TIMEOUT=$(($TCC_DEFAULT_TIMEOUT*1.5))
 LONG_TIMEOUT=$( get_tmux_option "@tcc_long_timeout" "$TCC_DEFAULT_LONG_TIMEOUT" )
 
+TCC_AUTOBIND=true
+AUTOBIND=$( get_tmux_option "@tcc_autobind" "$TCC_AUTOBIND" )
+
 TCC_COMMAND="${TCC_BIN} #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} ${TIMEOUT} > /dev/null"
 TCC_COMMAND_TRIPLE="${TCC_BIN} #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} ${LONG_TIMEOUT} > /dev/null"
 
@@ -18,6 +21,10 @@ TCC_COMMAND_TRIPLE="${TCC_BIN} #{pane_id} #{selection_start_x} #{selection_start
 tmux set-option -g @TCC_COMMAND ${TCC_COMMAND}
 tmux set-option -g @TCC_COMMAND_TRIPLE ${TCC_COMMAND_TRIPLE}
 
+# if autobind is NOT true, exit now without bindings
+if ! [[ "$AUTOBIND" = true ]]; then
+    exit 0
+fi
 
 # Double & Triple click taken and modified from ideasman dotfiles with an async timer
 # https://gitlab.com/ideasman42/dotfiles
