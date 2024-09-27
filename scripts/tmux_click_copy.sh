@@ -22,14 +22,14 @@ sleep $sleep_duration
 
 start_x="#{==:#{selection_start_x},${selection_start_x}}"
 start_y="#{==:#{selection_start_y},${selection_start_y}}"
-start_and="#{&&:${start_x},${start_y}}"
+same_start="#{&&:${start_x},${start_y}}"
 
 end_x="#{==:#{selection_end_x},${selection_end_x}}"
 end_y="#{==:#{selection_end_y},${selection_end_y}}"
-end_and="#{&&:${end_x},${end_y}}"
+same_end="#{&&:${end_x},${end_y}}"
 
-same_rect="#{&&:${start_and},${end_and}}"
-rect_tcc_down="#{&&:${same_rect},#{@tcc_down}}"
+same_rect="#{&&:${same_start},${same_end}}"
+same_selection="#{&&:${same_rect},#{selection_present}}" # check if text is still being selected
 
 # run the expression in tmux
-tmux if -bF "${rect_tcc_down}" "send -X -t ${pane_id} copy-selection-and-cancel ; set-option -p -t ${pane_id} @tcc_down 0"
+tmux if -bF "${same_selection}" "send -X -t ${pane_id} copy-pipe-and-cancel"

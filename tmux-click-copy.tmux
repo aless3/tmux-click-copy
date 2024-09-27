@@ -21,7 +21,7 @@ TCC_COMMAND_TRIPLE="${TCC_BIN} #{pane_id} #{selection_start_x} #{selection_start
 tmux set-option -g @TCC_COMMAND ${TCC_COMMAND}
 tmux set-option -g @TCC_COMMAND_TRIPLE ${TCC_COMMAND_TRIPLE}
 
-# if autobind is NOT true, exit now without bindings
+# if autobind is NOT true, exit now without binding anything
 if ! [[ "$AUTOBIND" = true ]]; then
     exit 0
 fi
@@ -31,14 +31,12 @@ fi
 
 # Double LMB Select & Copy (Word)
 tmux bind-key -T copy-mode DoubleClick1Pane \
-    set-option -p @tcc_down 1 \\\; \
     select-pane \\\; \
     send-keys -X select-word \\\; \
     send-keys -X copy-selection-no-clear \\\; \
     run-shell -b "${TCC_COMMAND}"
 
 tmux bind-key -T root DoubleClick1Pane \
-    set-option -p @tcc_down 1 \\\; \
     select-pane -t = \\\; \
     if-shell -F "#{||:#{pane_in_mode},#{mouse_any_flag}}" \
         "send-keys -M"  \
@@ -50,14 +48,12 @@ tmux bind-key -T root DoubleClick1Pane \
 
 # Triple LMB Select & Copy (Line)
 tmux bind-key -T copy-mode TripleClick1Pane \
-    set-option -p @tcc_down 1 \\\; \
     select-pane \\\; \
     send-keys -X select-line \\\; \
     send-keys -X copy-selection-no-clear \\\; \
     run-shell -b "${TCC_COMMAND_TRIPLE}"
 
 tmux bind-key -n TripleClick1Pane \
-    set-option -p @tcc_down 1 \\\; \
     select-pane -t = \\\; \
     if-shell -F "#{||:#{pane_in_mode},#{mouse_any_flag}}" \
     "send-keys -M" \
