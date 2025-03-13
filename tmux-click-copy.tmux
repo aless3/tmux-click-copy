@@ -36,6 +36,12 @@ tmux bind-key -T copy-mode DoubleClick1Pane \
     send-keys -X copy-selection-no-clear \\\; \
     run-shell -b "${TCC_COMMAND}"
 
+tmux bind-key -T copy-mode-vi DoubleClick1Pane \
+    select-pane \\\; \
+    send-keys -X select-word \\\; \
+    send-keys -X copy-selection-no-clear \\\; \
+    run-shell -b "${TCC_COMMAND}"
+
 tmux bind-key -T root DoubleClick1Pane \
     select-pane -t = \\\; \
     if-shell -F "#{||:#{pane_in_mode},#{mouse_any_flag}}" \
@@ -48,6 +54,12 @@ tmux bind-key -T root DoubleClick1Pane \
 
 # Triple LMB Select & Copy (Line)
 tmux bind-key -T copy-mode TripleClick1Pane \
+    select-pane \\\; \
+    send-keys -X select-line \\\; \
+    send-keys -X copy-selection-no-clear \\\; \
+    run-shell -b "${TCC_COMMAND_TRIPLE}"
+
+tmux bind-key -T copy-mode-vi TripleClick1Pane \
     select-pane \\\; \
     send-keys -X select-line \\\; \
     send-keys -X copy-selection-no-clear \\\; \
