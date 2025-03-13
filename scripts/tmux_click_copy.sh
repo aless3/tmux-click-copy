@@ -32,4 +32,4 @@ same_rect="#{&&:${same_start},${same_end}}"
 same_selection="#{&&:${same_rect},#{selection_present}}" # check if text is still being selected
 
 # run the expression in tmux
-tmux if -bF "${same_selection}" "send -X -t ${pane_id} copy-pipe-and-cancel"
+tmux if -bF "${same_selection}" "send -X -t ${pane_id} copy-pipe-no-clear"
