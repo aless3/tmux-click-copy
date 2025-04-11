@@ -16,8 +16,9 @@ The default timeout after which this plugin copies the selection and exits copy 
 
 You can modify setting the options `@tcc_timeout` (for double click) and `@tcc_long_timeout` (for triple click) before loading it:
 ``` shell
-set -g @tcc_timeout 10
-set -g @tcc_long_timeout 100
+set -g @tcc_timeout 0.5 # wait 0.5 seconds on double click to check if the selection changed
+set -g @tcc_long_timeout 3 # wait 3 seconds on triple click to check if the selection changed
+set -g @tcc_copy_command "copy-pipe-no-clear" # change copy command
 set -g @plugin "aless3/tmux-click-copy"
 ```
 

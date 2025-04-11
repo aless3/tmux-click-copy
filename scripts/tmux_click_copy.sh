@@ -10,6 +10,8 @@ selection_end_y=$5
 
 sleep_duration=$6
 
+copy_command=$7
+
 sleep $sleep_duration
 
 # this is a multi #{&&:X,Y} expression because else the 'and-ing'
@@ -32,4 +34,4 @@ same_rect="#{&&:${same_start},${same_end}}"
 same_selection="#{&&:${same_rect},#{selection_present}}" # check if text is still being selected
 
 # run the expression in tmux
-tmux if -bF "${same_selection}" "send -X -t ${pane_id} copy-pipe-and-cancel"
+tmux if -bF "${same_selection}" "send -X -t ${pane_id} ${copy_command}"

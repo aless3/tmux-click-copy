@@ -11,11 +11,14 @@ TIMEOUT=$( get_tmux_option "@tcc_timeout" "$TCC_DEFAULT_TIMEOUT" )
 TCC_DEFAULT_LONG_TIMEOUT="0.7"
 LONG_TIMEOUT=$( get_tmux_option "@tcc_long_timeout" "$TCC_DEFAULT_LONG_TIMEOUT" )
 
+TCC_DEFAULT_COPY_COMMAND="copy-pipe-and-cancel"
+COPY_COMMAND=$( get_tmux_option "@tcc_copy_command" "$TCC_DEFAULT_COPY_COMMAND" )
+
 TCC_AUTOBIND=true
 AUTOBIND=$( get_tmux_option "@tcc_autobind" "$TCC_AUTOBIND" )
 
-TCC_COMMAND="${TCC_BIN} #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} ${TIMEOUT} > /dev/null"
-TCC_COMMAND_TRIPLE="${TCC_BIN} #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} ${LONG_TIMEOUT} > /dev/null"
+TCC_COMMAND="${TCC_BIN} #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} ${TIMEOUT} ${COPY_COMMAND} > /dev/null"
+TCC_COMMAND_TRIPLE="${TCC_BIN} #{pane_id} #{selection_start_x} #{selection_start_y} #{selection_end_x} #{selection_end_y} ${LONG_TIMEOUT} ${COPY_COMMAND} > /dev/null"
 
 # keep an option with the shell command so the user can bind it where they prefer
 tmux set-option -g @TCC_COMMAND ${TCC_COMMAND}
